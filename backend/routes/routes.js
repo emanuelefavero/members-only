@@ -13,7 +13,6 @@ router.get('/messages', messageController.getMessages)
 router.post('/messages', messageController.createMessage)
 // router.get('/messages/:messageId', messageController.getMessage)
 
-// router.delete('/messages/:messageId', messageController.deleteMessage)
 router.delete('/messages/:messageId', messageController.deleteMessage)
 
 // NOTE:

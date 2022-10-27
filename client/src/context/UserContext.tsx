@@ -15,12 +15,6 @@ const UserContext = createContext({
   setRegisterEmail: (email: string) => {},
   registerFullName: '',
   setRegisterFullName: (email: string) => {},
-  // registerRole: '',
-  // setRegisterRole: (email: string) => {},
-  // registerMembership: false,
-  // setRegisterMembership: (membership: boolean) => {},
-  // registerCreatedAt: new Date(),
-  // setRegisterCreatedAt: (createdAt: Date) => {},
 
   loginUsername: '',
   setLoginUsername: (username: string) => {},
@@ -49,9 +43,6 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const [registerPassword, setRegisterPassword] = useState('')
   const [registerEmail, setRegisterEmail] = useState('')
   const [registerFullName, setRegisterFullName] = useState('')
-  // const [registerRole, setRegisterRole] = useState('')
-  // const [registerMembership, setRegisterMembership] = useState(false)
-  // const [registerCreatedAt, setRegisterCreatedAt] = useState(new Date())
 
   const [loginUsername, setLoginUsername] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
@@ -64,9 +55,6 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         password: registerPassword,
         email: registerEmail,
         fullName: registerFullName,
-        // role: registerRole,
-        // membership: registerMembership,
-        // createdAt: registerCreatedAt,
       },
       withCredentials: true,
       url: 'http://localhost:4000/register',
@@ -84,9 +72,6 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       url: 'http://localhost:4000/login',
     }).then((res) => {
       console.log(res.data)
-
-      // setUser(res.data)
-      // window.location.reload()
     })
   }
 
@@ -97,9 +82,6 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       url: 'http://localhost:4000/logout',
     }).then((res) => {
       setUser(null)
-
-      // console.log(res.data)
-      // window.location.reload()
     })
   }
 
@@ -114,9 +96,6 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       } else {
         setUser(null)
       }
-
-      // setUser(res.data)
-      // console.log(res.data)
     })
   }
 
@@ -201,12 +180,6 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         setRegisterEmail,
         registerFullName,
         setRegisterFullName,
-        // registerRole,
-        // setRegisterRole,
-        // registerMembership,
-        // setRegisterMembership,
-        // registerCreatedAt,
-        // setRegisterCreatedAt,
 
         loginUsername,
         setLoginUsername,
