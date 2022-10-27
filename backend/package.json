@@ -11,7 +11,6 @@
   "author": "Emanuele Favero",
   "license": "MIT",
   "dependencies": {
-    "async": "^3.2.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.6",
