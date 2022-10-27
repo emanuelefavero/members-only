@@ -9,11 +9,13 @@ const MessageContext = createContext({
   messages: [],
   getMessages: () => {},
   deleteMessage: (id: string) => {},
+  likeMessage: (id: string) => {},
 })
 
 export function MessageProvider({ children }: { children: React.ReactNode }) {
   const [messageText, setMessageText] = useState('')
   const [messages, setMessages] = useState([])
+  const [username, setUsername] = useState('')
 
   // Create a new message using axios
   const createMessage = () => {
@@ -65,6 +67,27 @@ export function MessageProvider({ children }: { children: React.ReactNode }) {
       })
   }
 
+  // Increase the likes count of a message and limit to 1 like per user
+  const likeMessage = async (id: string) => {
+    await axios({
+      method: 'GET',
+      withCredentials: true,
+      url: 'http://localhost:4000/user',
+    })
+      .then((res) => {
+        if (res.data) {
+          setUsername(res.data.username)
+        } else {
+          setUsername('')
+        }
+      })
+      .then(() => {
+        axios.put(`http://localhost:4000/messages/${id}/like`, {
+          username: username,
+        })
+      })
+  }
+
   // -------- RETURN --------
   return (
     <MessageContext.Provider
@@ -75,6 +98,7 @@ export function MessageProvider({ children }: { children: React.ReactNode }) {
         createMessage,
         getMessages,
         deleteMessage,
+        likeMessage,
       }}
     >
       {children}

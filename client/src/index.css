@@ -116,7 +116,9 @@ textarea {
   font-size: 1.25rem;
   font-size: 1rem;
   font-weight: 500;
+  background: rgba(236, 239, 243, 0.969);
   color: rgb(33, 33, 33);
+  border: none;
   padding: 1rem;
   resize: none;
   border-radius: 0.25rem;
@@ -148,11 +150,13 @@ textarea:focus {
 
 .message {
   background-color: rgba(255, 255, 255, 0.02);
-  padding: 1rem;
+  padding: 1.2rem 1rem 0.6rem 1rem;
   border-radius: 0.25rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
   margin-top: 2rem;
+
+  position: relative;
 }
 
 .message .author {
@@ -161,6 +165,7 @@ textarea:focus {
   background-color: black;
   width: max-content;
   padding: 0.3rem 1rem;
+  margin-bottom: 1rem;
   border-radius: 0.4rem;
   border: 1px solid rgba(255, 255, 255, 0.192);
 }
@@ -173,4 +178,46 @@ textarea:focus {
 .delete-button-container {
   display: grid;
   place-items: end;
+}
+
+.delete-button {
+  background: none;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.114);
+}
+
+.delete-button:hover {
+  background-color: rgba(213, 25, 56, 0.3);
+}
+
+.like-button {
+  background: none;
+  padding: 0.8rem;
+  position: relative;
+  top: 2px;
+  border-radius: 100%;
+  margin-right: 0.3rem;
+}
+
+.like-button-container button {
+  background: none;
+}
+
+.heart {
+  color: rgb(75, 83, 110);
+}
+
+.like-button:hover .heart {
+  color: var(--color-primary);
+}
+
+.like-button:active .heart {
+  transition: 0.3s;
+  scale: 1.3;
+  color: white;
+}
+
+.likes {
+  color: rgb(115, 128, 166);
+  font-size: 1rem;
 }

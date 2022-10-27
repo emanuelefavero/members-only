@@ -36,3 +36,25 @@ exports.deleteMessage = (req, res, next) => {
     res.send('Message deleted successfully')
   })
 }
+
+// NOTE:
+// Increase the likes count of a message and limit how many times a user can like a message to 1
+exports.likeMessage = (req, res, next) => {
+  Message.findById(req.params.messageId, (err, message) => {
+    if (err) {
+      return next(err)
+    }
+    if (message.likedBy.includes(req.body.username)) {
+      res.send('You already liked this message')
+    } else {
+      message.likedBy.push(req.body.username)
+      message.likes++
+      message.save((err, result) => {
+        if (err) {
+          return next(err)
+        }
+        res.send(result)
+      })
+    }
+  })
+}

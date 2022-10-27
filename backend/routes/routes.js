@@ -16,4 +16,8 @@ router.post('/messages', messageController.createMessage)
 // router.delete('/messages/:messageId', messageController.deleteMessage)
 router.delete('/messages/:messageId', messageController.deleteMessage)
 
+// NOTE:
+// Add a new route for liking a message
+router.put('/messages/:messageId/like', messageController.likeMessage)
+
 module.exports = router

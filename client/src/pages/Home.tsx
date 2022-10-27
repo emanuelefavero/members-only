@@ -2,9 +2,8 @@ import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import UserContext from '../context/UserContext'
 import MessageContext from '../context/MessageContext'
-import axios from 'axios'
+import { FaHeart } from 'react-icons/fa'
 
-// function Home({ user, logout }: Props) {
 function Home() {
   const { user, timeFrame, getTimeFrame } = useContext(UserContext)
   const {
@@ -14,6 +13,7 @@ function Home() {
     createMessage,
     getMessages,
     deleteMessage,
+    likeMessage,
   } = useContext(MessageContext)
 
   useEffect(() => {
@@ -22,22 +22,6 @@ function Home() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages])
-
-  // Delete a message using axios
-  // const deleteMessage = (id: string) => {
-  //   axios({
-  //     method: 'DELETE',
-  //     url: `http://localhost:4000/delete-message/${id}`,
-  //     withCredentials: true,
-  //   })
-  //     .then((res) => {
-  //       console.log(res.data)
-  //       getMessages()
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  // }
 
   return (
     <>
@@ -52,6 +36,7 @@ function Home() {
               <h3>Whispering Since {timeFrame}</h3>
             </div>
 
+            {/* CREATE NEW MESSAGE */}
             <form
               onSubmit={(e) => {
                 e.preventDefault()
@@ -73,6 +58,7 @@ function Home() {
         ) : null}
       </div>
       <div>
+        {/* MESSAGES */}
         {messages.map((message: any) => {
           return (
             <div className='message' key={message._id}>
@@ -88,10 +74,22 @@ function Home() {
               </h4>
               <p className='text'>{message.text}</p>
 
+              {/* Like Button */}
+              <div className='like-button-container'>
+                <button
+                  className='like-button'
+                  onClick={() => likeMessage(message._id)}
+                >
+                  <FaHeart className='heart' />
+                </button>
+                <span className='likes'>{message.likes}</span>
+              </div>
+
               {/* Delete Button */}
               {message.user === user?.username ? (
                 <div className='delete-button-container'>
                   <button
+                    className='delete-button'
                     onClick={() => {
                       deleteMessage(message._id)
                     }}
