@@ -10,10 +10,10 @@ router.get('/logout', authController.logout)
 router.get('/user', authController.user)
 
 router.get('/messages', messageController.getMessages)
-router.post('/create-message', messageController.createMessage)
+router.post('/messages', messageController.createMessage)
 // router.get('/messages/:messageId', messageController.getMessage)
 
 // router.delete('/messages/:messageId', messageController.deleteMessage)
-router.delete('/delete-message/:messageId', messageController.deleteMessage)
+router.delete('/messages/:messageId', messageController.deleteMessage)
 
 module.exports = router

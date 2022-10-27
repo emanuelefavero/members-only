@@ -27,7 +27,7 @@ function App() {
   }, [])
 
   return (
-    <>
+    <div className='App'>
       <UserProvider>
         <MessageProvider>
           <Router>
@@ -55,7 +55,7 @@ function App() {
           </Router>
         </MessageProvider>
       </UserProvider>
-    </>
+    </div>
   )
 }
 

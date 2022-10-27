@@ -19,7 +19,7 @@ export function MessageProvider({ children }: { children: React.ReactNode }) {
   const createMessage = () => {
     axios({
       method: 'POST',
-      url: 'http://localhost:4000/create-message',
+      url: 'http://localhost:4000/messages',
       data: {
         text: messageText,
       },
@@ -53,7 +53,7 @@ export function MessageProvider({ children }: { children: React.ReactNode }) {
   const deleteMessage = (id: string) => {
     axios({
       method: 'DELETE',
-      url: `http://localhost:4000/delete-message/${id}`,
+      url: `http://localhost:4000/messages/${id}`,
       withCredentials: true,
     })
       .then((res) => {
