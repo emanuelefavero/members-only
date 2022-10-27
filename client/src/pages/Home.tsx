@@ -2,12 +2,19 @@ import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import UserContext from '../context/UserContext'
 import MessageContext from '../context/MessageContext'
+import axios from 'axios'
 
 // function Home({ user, logout }: Props) {
 function Home() {
   const { user, timeFrame, getTimeFrame } = useContext(UserContext)
-  const { messageText, setMessageText, messages, createMessage, getMessages } =
-    useContext(MessageContext)
+  const {
+    messageText,
+    setMessageText,
+    messages,
+    createMessage,
+    getMessages,
+    deleteMessage,
+  } = useContext(MessageContext)
 
   useEffect(() => {
     getTimeFrame()
@@ -15,6 +22,22 @@ function Home() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages])
+
+  // Delete a message using axios
+  // const deleteMessage = (id: string) => {
+  //   axios({
+  //     method: 'DELETE',
+  //     url: `http://localhost:4000/delete-message/${id}`,
+  //     withCredentials: true,
+  //   })
+  //     .then((res) => {
+  //       console.log(res.data)
+  //       getMessages()
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // }
 
   return (
     <>
@@ -64,6 +87,19 @@ function Home() {
                 {message.user}
               </h4>
               <p className='text'>{message.text}</p>
+
+              {/* Delete Button */}
+              {message.user === user?.username ? (
+                <div className='delete-button-container'>
+                  <button
+                    onClick={() => {
+                      deleteMessage(message._id)
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ) : null}
             </div>
           )
         })}

@@ -169,3 +169,8 @@ textarea:focus {
   margin-top: 0.5rem;
   color: white;
 }
+
+.delete-button-container {
+  display: grid;
+  place-items: end;
+}

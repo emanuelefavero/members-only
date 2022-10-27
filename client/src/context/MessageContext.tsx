@@ -8,6 +8,7 @@ const MessageContext = createContext({
   createMessage: () => {},
   messages: [],
   getMessages: () => {},
+  deleteMessage: (id: string) => {},
 })
 
 export function MessageProvider({ children }: { children: React.ReactNode }) {
@@ -48,6 +49,22 @@ export function MessageProvider({ children }: { children: React.ReactNode }) {
       })
   }
 
+  // Delete a message using axios
+  const deleteMessage = (id: string) => {
+    axios({
+      method: 'DELETE',
+      url: `http://localhost:4000/delete-message/${id}`,
+      withCredentials: true,
+    })
+      .then((res) => {
+        console.log(res.data)
+        getMessages()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   // -------- RETURN --------
   return (
     <MessageContext.Provider
@@ -57,6 +74,7 @@ export function MessageProvider({ children }: { children: React.ReactNode }) {
         messages,
         createMessage,
         getMessages,
+        deleteMessage,
       }}
     >
       {children}
