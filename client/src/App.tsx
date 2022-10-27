@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { UserProvider } from './context/UserContext'
+import { MessageProvider } from './context/MessageContext'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 
@@ -17,11 +18,9 @@ import UserDetail from './pages/UserDetail'
 import UserContext from './context/UserContext'
 
 function App() {
-  const { getUser, user } = useContext(UserContext)
+  const { getUser } = useContext(UserContext)
 
   useEffect(() => {
-    console.log(user?.username)
-
     getUser()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,29 +29,31 @@ function App() {
   return (
     <>
       <UserProvider>
-        <Router>
-          <Header />
-          <Routes>
-            <Route
-              path='/'
-              element={
-                <ProtectedRoute redirectPath='/login'>
-                  <Home />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path='/profile'
-              element={
-                <ProtectedRoute redirectPath='/login'>
-                  <UserDetail />
-                </ProtectedRoute>
-              }
-            />
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
-          </Routes>
-        </Router>
+        <MessageProvider>
+          <Router>
+            <Header />
+            <Routes>
+              <Route
+                path='/'
+                element={
+                  <ProtectedRoute redirectPath='/login'>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path='/profile'
+                element={
+                  <ProtectedRoute redirectPath='/login'>
+                    <UserDetail />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+            </Routes>
+          </Router>
+        </MessageProvider>
       </UserProvider>
     </>
   )

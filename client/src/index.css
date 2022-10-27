@@ -1,6 +1,7 @@
 :root {
   /* --color-primary: rgb(107, 164, 248); */
   --color-primary: rgb(235, 0, 70);
+  --color-primary-hover: rgb(196, 5, 62);
 }
 
 * {
@@ -16,10 +17,12 @@
 
 body {
   width: 100%;
-  height: 100vh;
   margin: 0;
-  /* box-sizing: border-box; */
-  padding: 3.125rem 2.25rem;
+
+  padding-top: 1rem;
+  padding-bottom: 100px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.25rem;
@@ -31,6 +34,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+header {
+  width: 100%;
 }
 
 h2 {
@@ -101,4 +108,64 @@ button.a {
 
 button.a:hover {
   text-decoration: underline;
+}
+
+textarea {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(33, 33, 33);
+  padding: 1rem;
+  resize: none;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.new-message {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.new-message button {
+  color: white;
+  background-color: var(--color-primary);
+}
+
+.new-message button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.message {
+  background-color: rgba(255, 255, 255, 0.02);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.message .author {
+  color: rgb(75, 255, 47);
+  font-size: 1rem;
+  background-color: black;
+  width: max-content;
+  padding: 0.3rem 1rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.192);
+}
+
+.message .text {
+  margin-top: 0.5rem;
+  color: white;
 }

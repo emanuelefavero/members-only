@@ -7,7 +7,7 @@ const passport = require('passport')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const bodyParser = require('body-parser')
-const authRouter = require('./routes/auth')
+const routes = require('./routes/routes')
 
 const app = express()
 
@@ -46,7 +46,7 @@ app.use(passport.session())
 require('./passportConfig')(passport)
 
 // ------------- Routes -------------
-app.use('/', authRouter)
+app.use('/', routes)
 
 // ----------- Start Server ------------
 const PORT = process.env.PORT || 4000
