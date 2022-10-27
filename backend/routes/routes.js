@@ -14,5 +14,6 @@ router.post('/create-message', messageController.createMessage)
 // router.get('/messages/:messageId', messageController.getMessage)
 
 // router.delete('/messages/:messageId', messageController.deleteMessage)
+router.delete('/delete-message/:messageId', messageController.deleteMessage)
 
 module.exports = router

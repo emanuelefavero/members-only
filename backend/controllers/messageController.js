@@ -26,3 +26,13 @@ exports.getMessages = (req, res, next) => {
       res.send(messages)
     })
 }
+
+// Delete a message
+exports.deleteMessage = (req, res, next) => {
+  Message.findByIdAndRemove(req.params.messageId, (err) => {
+    if (err) {
+      return next(err)
+    }
+    res.send('Message deleted successfully')
+  })
+}
