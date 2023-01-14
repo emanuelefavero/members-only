@@ -12,7 +12,7 @@ const routes = require('./routes/routes')
 const app = express()
 
 // ----------------- Mongoose -----------------
-const User = require('./models/user')
+// const User = require('./models/user')
 mongoose.connect(
   process.env.MONGODB_URI,
   {
