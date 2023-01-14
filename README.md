@@ -7,7 +7,7 @@ _PLEASE NOTE: I've added typescript and react to this project. The original proj
 ## Test the app locally on your machine
 
 - Clone the repo and `cd` into the project directory
-- Add a _.env_ file in the root directory with the following variables:
+- Add a _.env_ file in the backend directory with the following variables:
 
 ```dotenv
 MONGODB_URI='YOUR_MONGODB_URI'
